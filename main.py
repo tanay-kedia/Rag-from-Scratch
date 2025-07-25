@@ -6,7 +6,7 @@ import torch
 import numpy as np
 import json
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
+
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     top_k = 2
     # openai_model = ChatOpenAI(model = "gpt-3.5-turbo")
     gemini_model = ChatGoogleGenerativeAI(model = "gemini-1.5-flash")
-    api_key = os.getenv("GOOGLE_API_KEY")
+    api_key = os.getenv("GOOGLE_API_KEY")   
     if (api_key):
         print("api key found")
     else:
@@ -187,9 +187,11 @@ if __name__ == "__main__":
     #retrieving text of relevant chunk embeddings
     relevant_text = retrieve_text(top_results, document_data)
 
-    print (relevant_text)
+    # print (relevant_text)
 
     print(relevant_text["text"])
+
+    print("Separate Bitch /n")
 
     response = generate_llm_response(gemini_model, query, relevant_text)
     print(response)
